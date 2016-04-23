@@ -21,7 +21,9 @@
     "include-all": "~0.1.6",
     "rc": "1.0.1",
     "sails": "~0.12.3",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-mongo": "^0.12.0",
+    "sails-mysql": "^0.12.1"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -32,6 +34,6 @@
     "type": "git",
     "url": "git://github.com/tanzim/smash.git"
   },
-  "author": "tanzim",
+  "author": "Tahmid Tanzim <tahmid.tanzim@gmail.com>",
   "license": ""
 }
