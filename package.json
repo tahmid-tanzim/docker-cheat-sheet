@@ -35,5 +35,8 @@
     "url": "git://github.com/tanzim/smash.git"
   },
   "author": "Tahmid Tanzim <tahmid.tanzim@gmail.com>",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "grunt-contrib-jshint": "^1.0.0"
+  }
 }

@@ -48,7 +48,7 @@ Consider the following code of the `config/connections.js` file:
    module.exports.connections = {
       mysqlAdapter: {
          adapter:   'sails-mysql',
-         host:      'localhost,
+         host:      'localhost',
          user:      'root',
          password:  '',
          database:  'sampleDB'
@@ -69,7 +69,7 @@ npm install --save sails-mongo
 ```
 ##### 3.2.1 config/connections.js
 Consider the following code of the `config/connections.js` file:
-```
+```javascript
    module.exports.connections = {
       mongoAdapter: {
           adapter:  'sails-mongo',
@@ -80,8 +80,31 @@ Consider the following code of the `config/connections.js` file:
 ```
 ##### 3.2.2. config/models.js
 The following is the content of the `config/models.js` file:
-```
+```javascript
    module.exports.models = {
       connection: 'mongoAdapter'
    };
 ```
+### 4. Configuring the Grunt task runner file with [JSHint](http://jshint.com/)
+```
+npm install -g grunt
+npm install grunt-contrib-jshint --save-dev
+```
+Once it is installed, we need to create a new `jshint.js` filename in the `tasks/config` folder.
+```javascript
+  module.exports = function (grunt) {
+    grunt.config.set('jshint', {
+      jshint: {
+        myFiles: ['../../api/controllers/**/*.js']
+      }
+    });
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+  };
+```
+Once the task file is created, we need to register the task (that is, *jshint*) in the `default.js` file present in the `config/register` folder.
+```javascript
+  module.exports = function (grunt) {
+    grunt.registerTask('default', ['jshint', 'compileAssets', 'linkAssets', 'watch']);
+  };
+```
+Now run the `grunt` command in the terminal, *JSHint* will run first.
