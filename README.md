@@ -50,8 +50,8 @@ Consider the following code of the `config/connections.js` file:
          adapter:   'sails-mysql',
          host:      'localhost',
          user:      'root',
-         password:  '',
-         database:  'sampleDB'
+         password:  'root',
+         database:  'sailsApi'
       }
    };
 ```
@@ -85,6 +85,12 @@ The following is the content of the `config/models.js` file:
       connection: 'mongoAdapter'
    };
 ```
+
+###### Migrate key `config/models.js`
+1. `migrate: 'safe'`: Developer should manually create database, table, and collection.
+2. `migrate: 'alter'`: Automatic table, schema, and collection creation; however, keep the existing data.
+3. `migrate: 'drop'`: Drop the schema each time and rebuild it when you lift the Sails.js app.
+
 ### 4. Configuring the Grunt task runner file with [JSHint](http://jshint.com/)
 ```
 npm install -g grunt
@@ -108,3 +114,22 @@ Once the task file is created, we need to register the task (that is, *jshint*) 
   };
 ```
 Now run the `grunt` command in the terminal, *JSHint* will run first.
+
+### 5. Database design for REST API
+```
+mysql -uroot -p
+
+CREATE SCHEMA IF NOT EXISTS `sailsApi` DEFAULT CHARACTER SET latin1 ;
+CREATE TABLE IF NOT EXISTS `sailsApi`.`message` (
+  `email` VARCHAR(255) NULL DEFAULT NULL COMMENT '',
+  `message` VARCHAR(255) NULL DEFAULT NULL COMMENT '',
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
+  `createdAt` DATETIME NULL DEFAULT NULL COMMENT '',
+  `updatedAt` DATETIME NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+```
+### 6. Building REST API in Sails.js
+```
+sails generate api Message
+```
+
