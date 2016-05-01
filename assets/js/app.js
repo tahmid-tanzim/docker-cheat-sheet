@@ -4,11 +4,11 @@ angular.module('todoApp', ['ngRoute', 'ui.bootstrap'])
 
   .config(['$routeProvider', function ($routeProvider) {
 
-    $routeProvider.when('/', {
+    $routeProvider.when('/foo', {
         templateUrl: '/templates/todo.html',
         controller: 'TodoCtrl'
       }).otherwise({
-        redirectTo: '/',
+        redirectTo: '/foo',
         caseInsensitiveMatch: true
       });
 
