@@ -20,8 +20,8 @@ router.get('/tasks', function (req, res, next) {
             taskMap[task._id] = task;
         });
 
-        res.json(taskMap);
-        //res.json(tasks);
+        //res.json(taskMap);
+        res.json(tasks);
     });
 });
 
