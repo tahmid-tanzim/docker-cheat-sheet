@@ -1,45 +1,25 @@
 {
   "name": "smash",
-  "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
-  "dependencies": {
-    "bower": "^1.7.9",
-    "ejs": "2.3.4",
-    "forever": "^0.15.1",
-    "grunt": "0.4.5",
-    "grunt-contrib-clean": "0.6.0",
-    "grunt-contrib-coffee": "0.13.0",
-    "grunt-contrib-concat": "0.5.1",
-    "grunt-contrib-copy": "0.5.0",
-    "grunt-contrib-cssmin": "0.9.0",
-    "grunt-contrib-jst": "0.6.0",
-    "grunt-contrib-less": "1.1.0",
-    "grunt-contrib-uglify": "0.7.0",
-    "grunt-contrib-watch": "0.5.3",
-    "grunt-sails-linker": "~0.10.1",
-    "grunt-sync": "0.2.4",
-    "include-all": "~0.1.6",
-    "q": "^1.4.1",
-    "rc": "1.0.1",
-    "sails": "~0.12.3",
-    "sails-disk": "~0.10.9",
-    "sails-mongo": "^0.12.0",
-    "sails-mysql": "^0.12.1"
-  },
+  "version": "1.0.0",
+  "description": "Simple Task Manager",
+  "main": "server.js",
   "scripts": {
-    "debug": "node debug app.js",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tanzim/smash.git"
+    "url": "git+https://github.com/tahmid-tanzim/smash.git"
   },
   "author": "Tahmid Tanzim <tahmid.tanzim@gmail.com>",
-  "license": "",
-  "devDependencies": {
-    "grunt-contrib-jshint": "^1.0.0"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tahmid-tanzim/smash/issues"
+  },
+  "homepage": "https://github.com/tahmid-tanzim/smash#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0"
   }
 }
