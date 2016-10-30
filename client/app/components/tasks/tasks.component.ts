@@ -38,11 +38,23 @@ export class TasksComponent {
 
     deleteTask(id, i) {
         //var tasks = this.tasks;
-
         this.taskService.deleteTask(id)
             .subscribe(data => {
                 console.log("Deleted Data: ", data, id);
                 this.tasks.splice(i, 1);
+            });
+    }
+
+    updateStatus(task) {
+        var _task = {
+            _id: task._id,
+            title: task.title,
+            isDone: task.isDone
+        };
+
+        this.taskService.updateStatus(_task)
+            .subscribe(data => {
+                task.isDone = data.isDone;
             });
     }
 }
