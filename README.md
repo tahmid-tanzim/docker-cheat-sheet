@@ -54,3 +54,22 @@ $ docker run <docker-id/image-name:tag>
 ```shell
 $ docker commit -c 'CMD["python", "manage.py", "runserver"]' <container-id OR container-name>
 ```
+## 3. Making Real Projects with Docker
+### Generate docker image manually
+```shell
+$ cd web-app
+$ docker build -t oneleven/web-app:1.0.0 .
+$ docker run --name node-app -p 3000:8080 -d oneleven/web-app:1.0.0
+# Go to - http://localhost:3000
+$ docker exec -it <container-id OR container-name> sh
+```
+
+
+
+
+
+
+
+
+
+

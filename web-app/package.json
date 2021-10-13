@@ -1,0 +1,13 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "Dockerizing a node.js web app",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tahmid Tanzim <tahmid.tanzim.gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
