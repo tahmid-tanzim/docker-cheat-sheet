@@ -5,7 +5,7 @@ Common commands on Docker and Kubernetes.
 ### Container Lifecycle
 `docker run` = `docker create` + `docker start`
 ### Creating and Running a Container from an Image
-Command Format - `docker run <image-name:varsion> <command>`
+Command Format - `docker run <image-name:tag> <command>`
 ```shell
 $ docker pull busybox:stable
 $ docker run busybox:stable echo Hello World, Tanzim!
@@ -42,6 +42,15 @@ $ docker kill <container-id OR container-name>
 $ docker exec -it <container-id OR container-name> <command>
 # Executing commands one-time without interactive shell
 $ docker exec <container-id OR container-name> <command>
-$ docker run -it <image-name:varsion> <sh||bash||zsh>
+$ docker run -it <image-name:tag> <sh||bash||zsh>
 ```
 ## 2. Building Custom Images Through Docker Server
+### Building custom docker image from Dockerfile
+```shell
+$ docker build -t <docker-id/image-name:tag> .
+$ docker run <docker-id/image-name:tag>
+```
+### Generate docker image manually
+```shell
+$ docker commit -c 'CMD["python", "manage.py", "runserver"]' <container-id OR container-name>
+```
