@@ -2,7 +2,7 @@
 FROM node:16-alpine3.14
 
 # Create a working directory & copy project files
-WORKDIR /home/app
+WORKDIR /app
 COPY package.json .
 
 # Download and Install dependency

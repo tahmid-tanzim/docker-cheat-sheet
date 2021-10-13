@@ -1,0 +1,14 @@
+{
+  "name": "count-visits",
+  "version": "1.0.0",
+  "description": "Dockerizing a node.js app to count visits",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tahmid Tanzim <tahmid.tanzim.gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^3.1.2"
+  }
+}

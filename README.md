@@ -63,8 +63,20 @@ $ docker run --name node-app -p 3000:8080 -d oneleven/web-app:1.0.0
 # Go to - http://localhost:3000
 $ docker exec -it <container-id OR container-name> sh
 ```
-
-
+## 4. Docker Compose with Multiple Local Containers
+### Generate docker image manually
+```shell
+$ cd count-visits
+$ docker-compose up --build
+$ docker-compose up -d
+$ docker-compose down
+```
+### Container Restart Policy
+| Command        | Description                                                                                 |
+|----------------|---------------------------------------------------------------------------------------------|
+|`always`        | Always attempt to restart. Recommended for web application.                                 |
+|`on-failure`    | Only restart if the container stops with an error code. Recommended for worker application. |
+|`unless-stopped`| Always restart unless anyone forcibly stop it.                                              |
 
 
 
