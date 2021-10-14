@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:8081"
+    volumes:
+      - .:/app
     restart: always
 
   redis-server:

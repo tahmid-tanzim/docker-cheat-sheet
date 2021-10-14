@@ -61,13 +61,14 @@ $ cd web-app
 $ docker build -t oneleven/web-app:1.0.0 .
 $ docker run --name node-app -p 3000:8080 -d oneleven/web-app:1.0.0
 # Go to - http://localhost:3000
-$ docker exec -it <container-id OR container-name> sh
+$ docker exec -it node-app sh
+$ docker stop node-app
 ```
 ## 4. Docker Compose with Multiple Local Containers
 ### Generate docker image manually
 ```shell
 $ cd count-visits
-$ docker-compose up --build
+$ docker-compose build
 $ docker-compose up -d
 $ docker-compose down
 ```
@@ -77,6 +78,9 @@ $ docker-compose down
 |`always`        | Always attempt to restart. Recommended for web application.                                 |
 |`on-failure`    | Only restart if the container stops with an error code. Recommended for worker application. |
 |`unless-stopped`| Always restart unless anyone forcibly stop it.                                              |
+## 5. Building a Multi-Container Application
+
+
 
 
 
