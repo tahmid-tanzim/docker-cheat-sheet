@@ -33,10 +33,10 @@ const dbClient = new Pool({
     port: PGPORT
 });
 
-dbClient.on("error", () => console.error("Lost PostgreSQL Connection!"));
+dbClient.on("error", () => console.log("Lost PostgreSQL Connection!"));
 dbClient
     .query("CREATE TABLE IF NOT EXISTS values (number INT)")
-    .catch(err => console.error(err));
+    .catch(err => console.log(err));
 
 const redisClient = redis.createClient({
     host: REDIS_HOST,
@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/values/all", async (req, res) => {
-    const values = await dbClient.query("SELECT number FROM values")
+    const values = await dbClient.query("SELECT * FROM values")
     res.status(200).send(values.rows);
 });
 
@@ -61,22 +61,22 @@ app.get("/values/current", async (req, res) => {
         if (error) {
             return res.status(400).json({ error });
         }
-        res.status(200).send(values );
+        res.status(200).send(values);
     });
 });
 
 app.post("/values", async (req, res) => {
-    const index = req.body.index;
-    if (index > 40) {
-        res.status(422).json({ message: `Sorry! Index - ${index} is greater than 40.` });
+    const { index } = req.body;
+    if (parseInt(index) > 40) {
+        res.status(400).send({ error: `Sorry! Index - ${index} is greater than 40.` });
+    } else {
+        redisClient.hset("values", index, "Nothing yet!");
+        redisPublisher.publish("insert", index);
+        dbClient.query("INSERT INTO values(number) VALUES($1)", [index]);
+        res.status(201).send({ message: "Calculation In Progress!" });
     }
-
-    redisClient.hset("values", index, "Nothing yet!");
-    redisPublisher.publish("insert", index);
-    dbClient.query("INSERT INTO values(number) VALUES($1)", [index]);
-    res.status(201).json({ message: "Calculation In Progress!" });
 });
 
 app.listen(5000, () => {
-    console.log("Listening `server` on Port - 5000");
+    console.log("Listening API Server on Port - 5000");
 });

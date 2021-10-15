@@ -78,7 +78,7 @@ $ docker-compose down
 |`always`        | Always attempt to restart. Recommended for web application.                                 |
 |`on-failure`    | Only restart if the container stops with an error code. Recommended for worker application. |
 |`unless-stopped`| Always restart unless anyone forcibly stop it.                                              |
-## 5. Building a Multi-Container Application
+
 
 
 
