@@ -89,17 +89,23 @@ $ docker-compose down
 https://minikube.sigs.k8s.io/docs/start/
 
 #### Install
+```shell
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+```
 
 #### Start Cluster
+```shell
 minikube start --driver=docker
+```
 
 #### Basic kubectl commands
-* Create Deployment: `kubectl create deployment [name]`
-* Edit Deployment: `kubectl edit deployment [name]`
-* Delete Deployment: `kubectl delete deployment [name]`
+* Create Deployment: `kubectl create deployment [deployment name]`
+* Edit Deployment: `kubectl edit deployment [deployment name]`
+* Delete Deployment: `kubectl delete deployment [deployment name]`
 * Status of K8s components: `kubectl get nodes / pod / services / replicaset / deployment`
+* Status of details pod: `kubectl get pod -o wide`
+* Service Details: `kubectl describe service [service name]`
 * Log to console: `kubectl logs [pod name]`
 * Get interactive terminal: `kubectl exec -it [pod name] -- bin/bash`
 
@@ -108,6 +114,9 @@ kubectl create deployment nginx-deployment --image=nginx:1.25.2-alpine
 kubectl edit deployment nginx-deployment
 kubectl delete deployment nginx-deployment
 kubectl apply -f k8s/nginx-deployment.yaml
+kubectl apply -f k8s/nginx-service.yaml
+kubectl delete -f k8s/nginx-deployment.yaml
+kubectl delete -f k8s/nginx-service.yaml
 ```
 
 
