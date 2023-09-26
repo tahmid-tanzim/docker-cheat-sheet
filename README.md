@@ -103,7 +103,7 @@ minikube start --driver=docker
 * Create Deployment: `kubectl create deployment [deployment name]`
 * Edit Deployment: `kubectl edit deployment [deployment name]`
 * Delete Deployment: `kubectl delete deployment [deployment name]`
-* Status of K8s components: `kubectl get nodes / pod / services / replicaset / deployment`
+* Status of K8s components: `kubectl get all / nodes / pod / services / replicaset / deployment`
 * Status of details pod: `kubectl get pod -o wide`
 * Service Details: `kubectl describe service [service name]`
 * Log to console: `kubectl logs [pod name]`
